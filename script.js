@@ -1,3 +1,8 @@
+let ComputerChoice 
+let PlayerChoice 
+
+
+
 function getComputerChoice() {
     let chosenNumber = Math.random() * 3
     chosenNumber = Math.floor(chosenNumber)
@@ -33,20 +38,60 @@ function getPlayerChoice() {
 }
 
 function gameRound() {
-    // funcion comparando inputs de computer y player para decidir a quien dar un punto con variables para un += y asi ir sumando
+    ComputerChoice = getComputerChoice()
+    PlayerChoice = getPlayerChoice()
+
+    let computerPoints = 0
+    let playerPoints = 0
+
+    if (ComputerChoice == PlayerChoice) {
+        console.log("This was a tie! No points ")
+        computerPoints = 0
+        playerPoints = 0
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "rock" && PlayerChoice == "paper") {
+        console.log(`Player wins! Paper beats scissors`)
+        computerPoints = 0
+        playerPoints = 1
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "rock" && PlayerChoice == "scissors") {
+        console.log(`Computer wins! Rock beats scissors`)
+        computerPoints = 1
+        playerPoints = 0
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "paper" && PlayerChoice == "rock") {
+        console.log(`Computer wins! Paper beats rock`)
+        computerPoints = 1
+        playerPoints = 0
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "paper" && PlayerChoice == "scissors") {
+        console.log(`Player wins! Scissors beats paper`)
+        computerPoints = 0
+        playerPoints = 1
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "scissors" && PlayerChoice == "rock") {
+        console.log(`Player wins! Rock beats scissors`)
+        computerPoints = 0
+        playerPoints = 1
+        return computerPoints, playerPoints
+    } else if (ComputerChoice == "scissors" && PlayerChoice == "paper") {
+        console.log(`Computer wins! Scissors beats paper`)
+        computerPoints = 1
+        playerPoints = 0
+        return computerPoints, playerPoints
+    }
 }
 
 
-let ComputerChoice 
-let PlayerChoice 
+// Here the game starts // 
 let computerScore = 0 
 let playerScore = 0 
-// creamos variables para los choices del bucle
 
-
-// creamos bucle para el juego hasta el primero llegar a 5
 while (computerScore < 5 || playerScore < 5) {
-    // bucle del juego
+    // bucle del juego + añadir display game score al principio
 }
+
+
+
 
 console.log("Game Over!")

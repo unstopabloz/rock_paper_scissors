@@ -1,7 +1,8 @@
 function getComputerChoice() {
-    // elige random number
+    let chosenNumber = math.random() * 3
+    console.log(chosenNumber)
 }
-
+getComputerChoice()
 function getPlayerChoice() {
     // input por el choice
 }

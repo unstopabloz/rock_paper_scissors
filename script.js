@@ -1,6 +1,15 @@
 function getComputerChoice() {
-    let chosenNumber = math.random() * 3
-    console.log(chosenNumber)
+    let chosenNumber = Math.random() * 3
+    chosenNumber = Math.floor(chosenNumber)
+
+    if (chosenNumber == 0) {
+        return "Rock"
+    } else if (chosenNumber == 1) {
+        return "Paper"
+    } else if (chosenNumber == 2) {
+        return "Scissors"
+    }
+alert(getComputerChoice())
 }
 getComputerChoice()
 function getPlayerChoice() {

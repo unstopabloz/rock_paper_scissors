@@ -17,11 +17,12 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    let playerChoice = prompt("Choose between Rock, Paper or Scissors for this round: ")
+    let Playerchoise 
+    playerChoice = prompt("Choose between Rock, Paper or Scissors for this round: ")
     playerChoice = playerChoice.toString()
 
-    while (playerChoice.length < 4) {
-        let playerChoice = prompt("Choose between Rock, Paper or Scissors for this round: ")
+    while (playerChoice.length < 4 || playerChoice === false) {
+        playerChoice = prompt("Choose between Rock, Paper or Scissors for this round: ")
     }
 
     playerChoice = playerChoice.toLowerCase()

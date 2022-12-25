@@ -1,8 +1,9 @@
+// variables defined
 let ComputerChoice 
-let PlayerChoice 
+let PlayerChoice
 
 
-
+// game execution functions
 function getComputerChoice() {
     let chosenNumber = Math.random() * 3
     chosenNumber = Math.floor(chosenNumber)
@@ -26,44 +27,71 @@ function gameRound(button) {
     } else if (button == 3) {
         playerChoice = 'scissors'
     }
-    console.log(playerChoice);
+    let result = gameEngine(playerChoice, computerChoice);
+    pointsUpdate(result);
+    let endGame = endGameCheck(playerPoints, computerPoints);
+    if (endGame) {
+        playerPoints = 0
+        computerPoints = 0
+    }
 }
 
 function gameEngine(playerChoice, computerChoice) {
     if (computerChoice == playerChoice) {
         console.log("This was a tie! No points ")
-        computerPoints = 0
-        playerPoints = 0
         return "nothing"
     } else if (computerChoice == "rock" && playerChoice == "paper") {
         console.log(`Player wins! Paper beats scissors`)
-        computerPoints = 0
-        playerPoints = 1
         return "player"
     } else if (computerChoice == "rock" && playerChoice == "scissors") {
         console.log(`Computer wins! Rock beats scissors`)
-        computerPoints = 1
-        playerPoints = 0
         return "computer"
     } else if (computerChoice == "paper" && playerChoice == "rock") {
         console.log(`Computer wins! Paper beats rock`)
-        computerPoints = 1
-        playerPoints = 0
         return "computer"
     } else if (computerChoice == "paper" && playerChoice == "scissors") {
         console.log(`Player wins! Scissors beats paper`)
-        computerPoints = 0
-        playerPoints = 1
         return "player"
     } else if (computerChoice == "scissors" && playerChoice == "rock") {
         console.log(`Player wins! Rock beats scissors`)
-        computerPoints = 0
-        playerPoints = 1
         return "player"
     } else if (computerChoice == "scissors" && playerChoice == "paper") {
         console.log(`Computer wins! Scissors beats paper`)
-        computerPoints = 1
-        playerPoints = 0
         return "computer"
+    }
+}
+
+let playerPoints = 0
+let computerPoints = 0
+function pointsUpdate(result) {
+    if (result == 'nothing') {
+        playerPoints += 0
+        computerPoints += 0
+    } else if (result =='player') {
+        playerPoints += 1
+        computerPoints += 0
+    } else if (result =='computer') {
+        playerPoints += 0
+        computerPoints += 1
+    }
+}
+
+function endGameCheck(playerPoints, computerPoints) {
+    if (playerPoints == 5) {
+        let chosenOne = document.querySelector('.winnerAnnouncer');
+        let winner = document.createElement('p');
+        winner.textContent = 'Player Wins!'
+        winner.style.cssText = "color: red; font-size: 40px";
+        chosenOne.appendChild(winner);
+        return true
+    } else if (computerPoints == 5) {
+        let chosenOne = document.querySelector('.winnerAnnouncer');
+        let winner = document.createElement('p');
+        winner.textContent = 'Computer Wins!'
+        winner.style.cssText = "color: orange; font-size: 40px";
+        chosenOne.appendChild(winner);
+        return true
+    } else {
+        console.log('No winner yet. Game keeps executing');
     }
 }
